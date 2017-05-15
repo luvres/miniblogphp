@@ -8,6 +8,7 @@ docker run --name MariaDB \
 -e MYSQL_ROOT_PASSWORD=maria \
 -d mariadb
 ```
+```
 docker exec -ti MariaDB mysql -uroot -pmaria
 ```
 ### Web Server PHP
