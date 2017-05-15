@@ -117,5 +117,5 @@
 
 
   function renderCreatePost($app){
-    echo "Post";
+    echo "<h1>{ Under construction }<h1>";
   }
