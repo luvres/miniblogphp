@@ -26,6 +26,11 @@
       renderDeleteUser($app);
       break;
 
+    case "updateUser":
+      $app = new App();
+      renderUpdateUser($app);
+      break;
+
     default:
       $app = new App();
       renderPage($app);
@@ -70,7 +75,13 @@
   function renderDeleteUser($app){
     $site = $app->loadModel("User");
     $idusuario = (int)$_GET["idusuario"];
-
     $obj = $site->deleteUser($app->PDO, $idusuario);
     $app->loadView("Users",$param);
+  }
+
+
+  function renderUpdateUser($app){
+    $param = array('titulo' => $app->site_titulo);
+    $app->loadView("User_form",$param);
+echo "Update";
   }

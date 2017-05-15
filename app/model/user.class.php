@@ -34,14 +34,19 @@ class User {
 	}
 
 
-/*
 	public function getUserId($pdo, $idusuario){
 		$obj = $con->prepare("SELECT idusuario,nome
 													FROM usuario
-													WHERE idusuario :idusuario");
+													WHERE idusuario = :idusuario");
 		$obj->bindParam(":idusuario",$idusuario);
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}
-*/
+
+	public function updateUser($con, $nome){
+		$obj = $con->prepare("UPDATE usuario SET nome=?
+													WHERE idusuario=?");
+		$obj->bindParam(":idusuario",$idusuario);
+		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
+	}
 
 }
