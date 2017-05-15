@@ -1,0 +1,19 @@
+## Mini Blog PHP Begin
+-----
+### Database MySQL (MariaDB)
+```
+docker run --name MariaDB \
+-p 3308:3306 \
+-e MYSQL_ROOT_PASSWORD=maria \
+-d mariadb
+```
+docker exec -ti MariaDB mysql -uroot -pmaria
+```
+### Web Server PHP
+```
+docker run --rm --name Php -h php \
+--link MariaDB:mariadb-host \
+-p 800:80 \
+-v $HOME/www:/var/www \
+-ti izone/alpine:php
+```
