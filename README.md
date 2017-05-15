@@ -24,5 +24,7 @@ docker run --rm --name Php -h php \
 -v miniblogphp:/var/www \
 -ti izone/alpine:php
 ```
-
-
+### Browser access
+```
+http://localhost:800
+```
