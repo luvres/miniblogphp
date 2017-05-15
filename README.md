@@ -1,4 +1,4 @@
-## Mini Blog PHP Begin
+# Mini Blog PHP Begin
 -----
 ### Database MySQL (MariaDB)
 ```
