@@ -47,17 +47,3 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
--- -----------------------------------------------------
--- INSERTS FOR TESTS
--- -----------------------------------------------------
-INSERT INTO usuario VALUES(NULL,'Leonardo Loures');
-INSERT INTO post VALUES(NULL,'Primeiro Post','Meu primeiro post para Mini Blog',1);
-INSERT INTO post VALUES(NULL,'Segundo Post','Segundo post para Mini Blog',1);
-
-SELECT * FROM usuario;
-SELECT * FROM post;
-
-SELECT u.nome,p.titulo,p.texto FROM usuario u,post p WHERE u.idusuario=p.idusuario;
-SELECT u.nome,p.titulo,p.texto FROM usuario u JOIN post p USING(idusuario);
-
