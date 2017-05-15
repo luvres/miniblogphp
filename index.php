@@ -31,6 +31,16 @@
       renderUpdateUser($app);
       break;
 
+    case "updateUserDone":
+      $app = new App();
+      renderUpdateUserDone($app);
+      break;
+
+    case "createPost":
+      $app = new App();
+      renderCreatePost($app);
+      break;
+
     default:
       $app = new App();
       renderPage($app);
@@ -84,15 +94,28 @@
     $app->loadView("Users",$param);
   }
 
-  function renderUpdateUser($app){
+  function  renderUpdateUser($app){
     $idusuario = (int)$_GET["idusuario"];
     $site = $app->loadModel("User");
     $obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Alterar usuário',
+                                    'idusuario' => $obj['idusuario'],
                                     'nome' => $obj['nome'],
                                     'btn' => 'Alterar',
-                                    'action' => 'updateUser'
+                                    'action' => 'updateUserDone'
                                     ));
     $app->loadView("User_form",$param);
+  }
+  function renderUpdateUserDone($app){
+    $site = $app->loadModel("User");
+    $nome = $_POST['nome'];
+    $idusuario = $_POST['idusuario'];
+    $obj = $site->updateUser($app->PDO, $nome, $idusuario);
+    $app->loadView("Users",$param);
+  }
+
+
+  function renderCreatePost($app){
+    echo "Post";
   }

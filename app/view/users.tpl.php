@@ -27,6 +27,7 @@
 					<th>Nome</th>
 					<th width="40"></th>
 					<th width="40"></th>
+          <th width="40"></th>
 				</tr>
 			</thead>
 
@@ -37,8 +38,11 @@
 					<td><?=$user["idusuario"]?></td>
 					<td><?=$user["nome"]?></td>
 					<td>
-						<a href="index.php?m=updateUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-primary">Alterar</a>
+						<a href="index.php?m=createPost&idusuario=<?=$user["idusuario"]?>" class="btn btn-success">Criar Post</a>
 					</td>
+          <td>
+            <a href="index.php?m=updateUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-primary">Alterar</a>
+          </td>
 					<td>
 						<a href="index.php?m=deleteUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir o registro?')">Excluir</a>
 					</td>

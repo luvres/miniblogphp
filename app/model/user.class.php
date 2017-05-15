@@ -42,11 +42,13 @@ class User {
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}
 
-	public function updateUser($con, $nome){
-		$obj = $con->prepare("UPDATE usuario SET nome = :nome
+	public function updateUser($con, $nome, $idusuario){
+		$ins = $con->prepare("UPDATE usuario SET nome = :nome
 													WHERE idusuario = :idusuario");
-		$obj->bindParam(":idusuario",$idusuario);
-		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
+		$ins->bindParam(":nome",$nome);
+		$ins->bindParam(":idusuario",$idusuario);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
 	}
 
 }
