@@ -30,7 +30,7 @@
 					<strong>Nome:</strong>
   			</div>
   			<div class="col-xs-10">
-					<input type="text" name="nome" class="col-xs-12 form-control" value="" autofocus required/>
+					<input type="text" value="<?=$tpl["dados"]["idusuario"]?>" name="nome" class="col-xs-12 form-control" value="" autofocus required/>
   			</div>
   		</div>
 
@@ -39,7 +39,7 @@
 					<input type="submit" value="Cadastrar" class="btn btn-primary btn-large" />
   			</div>
   		</div>
-  		<input type="hidden" value="<?=$tpl["dados"]["usuarioid"]?>" name="usuarioid" />
+  		<input type="hidden" value="<?=$tpl["dados"]["idusuario"]?>" name="idusuario" />
   	</form>
   </div>
 </div>

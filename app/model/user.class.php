@@ -39,12 +39,14 @@ class User {
 													FROM usuario
 													WHERE idusuario = :idusuario");
 		$obj->bindParam(":idusuario",$idusuario);
-		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+		//return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}
 
 	public function updateUser($con, $nome){
-		$obj = $con->prepare("UPDATE usuario SET nome=?
-													WHERE idusuario=?");
+		$obj = $con->prepare("UPDATE usuario SET nome = :nome
+													WHERE idusuario = :idusuario");
 		$obj->bindParam(":idusuario",$idusuario);
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}

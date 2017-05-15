@@ -63,6 +63,8 @@
 }
 
   function renderCreateUser($app){
+    $param = array('titulo' => $app->site_titulo,
+                   'dados' => array('tituloform' => 'Cadastrar novo usuário'));
     $app->loadView("User_form",$param);
   }
   function renderCreateNewUser($app){
@@ -73,15 +75,23 @@
   }
 
   function renderDeleteUser($app){
-    $site = $app->loadModel("User");
     $idusuario = (int)$_GET["idusuario"];
+    $site = $app->loadModel("User");
     $obj = $site->deleteUser($app->PDO, $idusuario);
     $app->loadView("Users",$param);
   }
 
-
   function renderUpdateUser($app){
-    $param = array('titulo' => $app->site_titulo);
+    $idusuario = (int)$_GET["idusuario"];
+    $site = $app->loadModel("User");
+    //$obj = $site->getUserId($app->PDO, $idusuario);
+    $param = array('titulo' => $app->site_titulo,
+                   'dados' => array('tituloform' => 'Alterar usuário'
+                                    ));
     $app->loadView("User_form",$param);
-echo "Update";
+
+print_r($idusuario);
+print_r($nome);
+print_r($site);
+print_r($obj);
   }
