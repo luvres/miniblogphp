@@ -83,15 +83,12 @@
 
   function renderUpdateUser($app){
     $idusuario = (int)$_GET["idusuario"];
+    $nome = $_GET['nome'];
     $site = $app->loadModel("User");
-    //$obj = $site->getUserId($app->PDO, $idusuario);
+    $obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
-                   'dados' => array('tituloform' => 'Alterar usuário'
+                   'dados' => array('tituloform' => 'Alterar usuário',
+                                    'nome' => $obj['nome']
                                     ));
     $app->loadView("User_form",$param);
-
-print_r($idusuario);
-print_r($nome);
-print_r($site);
-print_r($obj);
   }

@@ -30,7 +30,7 @@
 					<strong>Nome:</strong>
   			</div>
   			<div class="col-xs-10">
-					<input type="text" value="<?=$tpl["dados"]["idusuario"]?>" name="nome" class="col-xs-12 form-control" value="" autofocus required/>
+					<input type="text" value="<?=$tpl["dados"]["nome"]?>" name="nome" class="col-xs-12 form-control" value="" autofocus required/>
   			</div>
   		</div>
 
