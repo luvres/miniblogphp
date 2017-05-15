@@ -19,3 +19,7 @@ docker run --rm --name Php -h php \
 -v $HOME/www:/var/www \
 -ti izone/alpine:php
 ```
+### Download source
+```
+git clone https://github.com/luvres/miniblogphp.git
+```
