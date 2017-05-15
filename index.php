@@ -64,7 +64,10 @@
 
   function renderCreateUser($app){
     $param = array('titulo' => $app->site_titulo,
-                   'dados' => array('tituloform' => 'Cadastrar novo usuário'));
+                   'dados' => array('tituloform' => 'Cadastrar novo usuário',
+                                    'btn' => 'Cadastrar',
+                                    'action' => 'createNewUser'
+                                    ));
     $app->loadView("User_form",$param);
   }
   function renderCreateNewUser($app){
@@ -83,12 +86,13 @@
 
   function renderUpdateUser($app){
     $idusuario = (int)$_GET["idusuario"];
-    $nome = $_GET['nome'];
     $site = $app->loadModel("User");
     $obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Alterar usuário',
-                                    'nome' => $obj['nome']
+                                    'nome' => $obj['nome'],
+                                    'btn' => 'Alterar',
+                                    'action' => 'updateUser'
                                     ));
     $app->loadView("User_form",$param);
   }

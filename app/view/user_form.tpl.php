@@ -23,7 +23,7 @@
   		</div>
   	</div>
 
-  	<form method="POST" action="index.php?m=createNewUser">
+  	<form method="POST" action="index.php?m=<?=$tpl["dados"]["action"]?>">
 
   		<div class="row marginTop">
   			<div class="col-xs-2">
@@ -36,7 +36,7 @@
 
   		<div class="row marginTop">
   			<div class="col-xs-2">
-					<input type="submit" value="Cadastrar" class="btn btn-primary btn-large" />
+					<input type="submit" value="<?=$tpl["dados"]["btn"]?>" class="btn btn-primary btn-large" />
   			</div>
   		</div>
   		<input type="hidden" value="<?=$tpl["dados"]["idusuario"]?>" name="idusuario" />
