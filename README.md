@@ -1,6 +1,11 @@
 # Mini Blog PHP Begin
 -----
 ## Development Environment
+
+### Download source
+```
+git clone https://github.com/luvres/miniblogphp.git
+```
 ### Database MySQL (MariaDB)
 ```
 docker run --name MariaDB \
@@ -16,10 +21,8 @@ docker exec -ti MariaDB mysql -uroot -pmaria
 docker run --rm --name Php -h php \
 --link MariaDB:mariadb-host \
 -p 800:80 \
--v $HOME/www:/var/www \
+-v miniblogphp:/var/www \
 -ti izone/alpine:php
 ```
-### Download source
-```
-git clone https://github.com/luvres/miniblogphp.git
-```
+
+
