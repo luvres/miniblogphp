@@ -25,14 +25,23 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
+	public function deleteUser($con, $idusuario){
+		$ins = $con->prepare("DELETE FROM usuario
+													WHERE idusuario = :idusuario");
+		$ins->bindParam(":idusuario",$idusuario);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
 
 
+/*
 	public function getUserId($pdo, $idusuario){
 		$obj = $con->prepare("SELECT idusuario,nome
 													FROM usuario
 													WHERE idusuario :idusuario");
 		$obj->bindParam(":idusuario",$idusuario);
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
-}
+	}
+*/
 
 }

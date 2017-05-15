@@ -21,6 +21,11 @@
       renderCreateNewUser($app);
       break;
 
+    case "deleteUser":
+      $app = new App();
+      renderDeleteUser($app);
+      break;
+
     default:
       $app = new App();
       renderPage($app);
@@ -59,5 +64,13 @@
     $site = $app->loadModel("User");
     $nome = $_POST['nome'];
     $obj = $site->createUser($app->PDO, $nome);
+    $app->loadView("Users",$param);
+  }
+
+  function renderDeleteUser($app){
+    $site = $app->loadModel("User");
+    $idusuario = (int)$_GET["idusuario"];
+
+    $obj = $site->deleteUser($app->PDO, $idusuario);
     $app->loadView("Users",$param);
   }
