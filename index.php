@@ -123,8 +123,8 @@
 
   function renderCreatePost($app){
     $idusuario = (int)$_GET["idusuario"];
-    //$site = $app->loadModel("User");
-    //$obj = $site->getUserId($app->PDO, $idusuario);
+    $site = $app->loadModel("User");
+    $obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Cadastrar post',
                    'btn' => 'Cadastrar Post',
@@ -139,6 +139,8 @@ print_r($idusuario);
     $titulo = $_POST['post_titulo'];
     $texto = $_POST['post_texto'];
     $idusuario = $_POST['idusuario'];
+    $obj = $site->createPost($app->PDO, $titulo, $texto, $idusuario);
+    $app->loadView("Site",$param);
 echo "titulo : "; print_r($titulo);
 echo "<br>texto : "; print_r($texto);
 echo "<br>id : ";  print_r($idusuario);
