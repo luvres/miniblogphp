@@ -44,6 +44,15 @@
       renderCreateNewPost($app);
       break;
 
+    case "updatePost":
+      $app = new App();
+      renderUpdatePost($app);
+      break;
+
+    case "deletePost":
+      $app = new App();
+      renderDeletePost($app);
+      break;
 
 
     default:
@@ -55,6 +64,8 @@
   /*
    *  Funcoes
   */
+
+// Principal
   function renderPage($app){
     $site = $app->loadModel("Site");
     $obj = $site->listPosts($app->PDO);
@@ -65,7 +76,7 @@
                    );
     $app->loadView("Site",$param);
   }
-
+// USUARIO
   function renderUser($app){
     $site = $app->loadModel("User");
     $obj = $site->getUsers($app->PDO);
@@ -120,7 +131,7 @@
     $app->loadView("Users",$param);
   }
 
-
+// POSTS
   function renderCreatePost($app){
     $idusuario = (int)$_GET["idusuario"];
     $site = $app->loadModel("User");
@@ -144,6 +155,10 @@
     $app->loadView("Site",$param);
   }
 
+  function renderUpdatePost($app){
+    echo "Udate Post";
+  }
 
-//  $obj = $site->createUser($app->PDO, $nome);
-//  $app->loadView("Users",$param);
+  function renderDeletePost($app){
+    echo "Delete Post";
+  }

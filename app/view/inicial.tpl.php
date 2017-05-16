@@ -7,7 +7,13 @@
   	<div class="blog-post">
 			<h2 class="blog-post-title"><?=$post["titulo"]?></h2>
 			<p class="blog-post-meta">Autor: <?=$post['nome']?></p>
-			<p><?=$post['texto']?></p>
+			<p><pre><?=$post['texto']?></pre></p>
+			<a href="index.php?m=updatePost" onclick="" >
+	    	<i class="glyphicon glyphicon-edit" style="color:#428bca"></i>
+	    </a>
+			<a href="index.php?m=deletePost" onclick="return confirm('Excluir Usuario?')" >
+	      <i class="glyphicon glyphicon-trash" style="color:#fa5858"></i>
+	    </a>
   	</div><!-- /.blog-post -->
 
 <?php } ?>

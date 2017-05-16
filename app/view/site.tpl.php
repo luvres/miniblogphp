@@ -18,7 +18,9 @@
     <div class="blog-header">
       <h1 class="blog-title">Mini Blog PHP</h1>
       <p class="lead blog-description">Template of creating a blog with Bootstrap.</p>
+      <hr>
     </div>
+
   <div class="row">
 
   <div class="col-sm-8 blog-main">
