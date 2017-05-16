@@ -30,7 +30,6 @@
       $app = new App();
       renderUpdateUser($app);
       break;
-
     case "updateUserDone":
       $app = new App();
       renderUpdateUserDone($app);
@@ -40,6 +39,12 @@
       $app = new App();
       renderCreatePost($app);
       break;
+    case "createNewPost":
+      $app = new App();
+      renderCreateNewPost($app);
+      break;
+
+
 
     default:
       $app = new App();
@@ -117,10 +122,28 @@
 
 
   function renderCreatePost($app){
+    $idusuario = (int)$_GET["idusuario"];
+    //$site = $app->loadModel("User");
+    //$obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Cadastrar post',
                    'btn' => 'Cadastrar Post',
                    'action' => 'createNewPost'
                    ));
     $app->loadView("Post_form",$param);
+print_r($idusuario);
   }
+
+  function renderCreateNewPost($app){
+    $site = $app->loadModel("User");
+    $titulo = $_POST['post_titulo'];
+    $texto = $_POST['post_texto'];
+    $idusuario = $_POST['idusuario'];
+echo "titulo : "; print_r($titulo);
+echo "<br>texto : "; print_r($texto);
+echo "<br>id : ";  print_r($idusuario);
+  }
+
+
+//  $obj = $site->createUser($app->PDO, $nome);
+//  $app->loadView("Users",$param);

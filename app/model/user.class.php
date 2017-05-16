@@ -51,4 +51,14 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
+	public function createPost($con, $titulo, $texto, $idusuario){
+		$ins = $con->prepare("INSERT INTO post(titulo,texto,idusuario)
+													VALUES(:titulo,:texto,:idusuario)");
+		$ins->bindParam(":titulo",$titulo);
+		$ins->bindParam(":texto",$texto);
+		$ins->bindParam(":idusuario",$idusuario);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
+
 }
