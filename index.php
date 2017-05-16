@@ -117,5 +117,10 @@
 
 
   function renderCreatePost($app){
-    echo "<h1>{ Under construction };<h1>";
+    $param = array('titulo' => $app->site_titulo,
+                   'dados' => array('tituloform' => 'Cadastrar post',
+                   'btn' => 'Cadastrar Post',
+                   'action' => 'createNewPost'
+                   ));
+    $app->loadView("Post_form",$param);
   }
