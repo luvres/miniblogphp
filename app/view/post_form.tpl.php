@@ -25,7 +25,16 @@
 
   	<form method="POST" action="index.php?m=<?=$tpl["dados"]["action"]?>">
 
-  		<div class="row marginTop">
+      <div class="row marginTop">
+  			<div class="col-xs-2">
+					<strong>Autor do post:</strong>
+  			</div>
+        <div class="col-xs-10">
+          <strong><?=$tpl["dados"]["nome"]?></strong>
+        </div>
+  		</div>
+    <br>
+      <div class="row marginTop">
   			<div class="col-xs-2">
 					<strong>Título Post:</strong>
   			</div>
@@ -33,7 +42,7 @@
 					<input type="text" value="<?=$tpl["dados"]["post_titulo"]?>" name="post_titulo" class="col-xs-12 form-control" value="" autofocus required/>
   			</div>
   		</div>
-      <br>
+    <br>
       <div class="row marginTop">
         <div class="col-xs-2">
           <strong>Texto Completo:</strong>
@@ -42,7 +51,7 @@
           <textarea name="post_texto" class="col-xs-12 form-control" required><?=$tpl["dados"]["post_texto"]?></textarea>
         </div>
       </div>
-      <br>
+    <br>
 
   		<div class="row marginTop">
   			<div class="col-xs-2">

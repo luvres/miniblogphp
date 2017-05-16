@@ -129,6 +129,7 @@
                    'dados' => array('tituloform' => 'Cadastrar post',
                                     'idusuario' => $obj['idusuario'],
                                     'btn' => 'Cadastrar Post',
+                                    'nome' => $obj['nome'],
                                     'action' => 'createNewPost'
                                     ));
     $app->loadView("Post_form",$param);
@@ -139,7 +140,6 @@
     $titulo = $_POST['post_titulo'];
     $texto = $_POST['post_texto'];
     $idusuario = $_POST['idusuario'];
-    $idusuario = 4;
     $obj = $site->createPost($app->PDO, $titulo, $texto, $idusuario);
     $app->loadView("Site",$param);
   }
