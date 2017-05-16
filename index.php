@@ -132,7 +132,6 @@
                                     'action' => 'createNewPost'
                                     ));
     $app->loadView("Post_form",$param);
-print_r($idusuario);
   }
 
   function renderCreateNewPost($app){
