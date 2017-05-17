@@ -58,7 +58,6 @@
 					<input type="submit" value="<?=$tpl["dados"]["btn"]?>" class="btn btn-primary btn-large" />
   			</div>
   		</div>
-  		<input type="hidden" value="<?=$tpl["dados"]["idusuario"]?>" name="idusuario" />
       <input type="hidden" value="<?=$tpl["dados"]["idpost"]?>" name="idpost" />
   	</form>
   </div>

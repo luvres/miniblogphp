@@ -35,7 +35,6 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
-
 	public function getUserId($con, $idusuario){
 		$obj = $con->prepare("SELECT idusuario,nome
 													FROM usuario
@@ -80,5 +79,17 @@ class User {
 		$obj->bindParam(":idpost",$idpost);
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}
+
+	public function updatePost($con, $titulo, $texto, $idpost){
+		$ins = $con->prepare("UPDATE post
+													SET titulo=:titulo, texto=:texto
+													WHERE idpost = :idpost");
+		$ins->bindParam(":titulo",$titulo);
+		$ins->bindParam(":texto",$texto);
+		$ins->bindParam(":idpost",$idpost);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
+
 
 }

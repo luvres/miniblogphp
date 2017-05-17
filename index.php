@@ -177,23 +177,20 @@
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Editar Post',
                                     'idpost' => $obj['idpost'],
+                                    'nome' => $obj['nome'],
                                     'titulo' => $obj['titulo'],
                                     'texto' => $obj['texto'],
                                     'btn' => 'Salvar',
                                     'action' => 'updatePostDone'
                                     ));
     $app->loadView("Post_form",$param);
-echo "ID Post: "; print_r($idpost);
-echo "<br>";
-echo "ID User: "; print_r($idusuario);
-echo "<br>"; print_r($site);
-echo "<br>"; print_r($obj);
-echo "<br>"; print_r($param);
   }
+
   function renderUpdatePostDone($app){
     $site = $app->loadModel("User");
-    $nome = $_POST['nome'];
-    $idusuario = $_POST['idusuario'];
-    $obj = $site->updateUser($app->PDO, $nome, $idusuario);
-    $app->loadView("Users",$param);
-}
+    $titulo = $_POST['titulo'];
+    $texto = $_POST['texto'];
+    $idpost = $_POST['idpost'];
+    $obj = $site->updatePost($app->PDO, $titulo, $texto, $idpost);
+    $app->loadView("Site",$param);
+  }
