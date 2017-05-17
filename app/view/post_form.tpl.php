@@ -59,6 +59,8 @@
   			</div>
   		</div>
       <input type="hidden" value="<?=$tpl["dados"]["idpost"]?>" name="idpost" />
+      <input type="hidden" value="<?=$tpl["dados"]["idusuario"]?>" name="idusuario" />
+
   	</form>
   </div>
 </div>

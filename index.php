@@ -112,6 +112,7 @@
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Cadastrar novo usuário',
                                     ));
+    /* Listar Usuários */
     $obj = $site->getUsers($app->PDO);
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
@@ -124,6 +125,12 @@
     $idusuario = (int)$_GET["idusuario"];
     $site = $app->loadModel("User");
     $obj = $site->deleteUser($app->PDO, $idusuario);
+    /* Listar Usuários */
+    $obj = $site->getUsers($app->PDO);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'users',
+                   'users' => array('user' => $obj)
+                   );
     $app->loadView("Users",$param);
   }
 
@@ -147,6 +154,12 @@
     $obj = $site->updateUser($app->PDO, $nome, $idusuario);
     $param = array('titulo' => $app->site_titulo
                   );
+    /* Listar Usuários */
+    $obj = $site->getUsers($app->PDO);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'users',
+                   'users' => array('user' => $obj)
+                   );
     $app->loadView("Users",$param);
   }
 
@@ -167,10 +180,19 @@
 
   function renderCreateNewPost($app){
     $site = $app->loadModel("User");
-    $titulo = $_POST['post_titulo'];
-    $texto = $_POST['post_texto'];
+    $titulo = $_POST['titulo'];
+    $texto = $_POST['texto'];
     $idusuario = $_POST['idusuario'];
     $obj = $site->createPost($app->PDO, $titulo, $texto, $idusuario);
+    /* Listar Posts */
+    $site = $app->loadModel("Site");
+    $obj = $site->listPosts($app->PDO);
+    $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'inicial',
+                  'titulo_pagina' => 'titulo',
+                  'inicial' => array('posts' => $posts)
+                  );
     $app->loadView("Site",$param);
   }
 
@@ -178,6 +200,15 @@
     $idpost = (int)$_GET['idpost'];
     $site = $app->loadModel("User");
     $obj = $site->deletePost($app->PDO, $idpost);
+    /* Listar Posts */
+    $site = $app->loadModel("Site");
+    $obj = $site->listPosts($app->PDO);
+    $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'inicial',
+                  'titulo_pagina' => 'titulo',
+                  'inicial' => array('posts' => $posts)
+                  );
     $app->loadView("Site",$param);
   }
 
@@ -204,6 +235,15 @@
     $idpost = $_POST['idpost'];
     $obj = $site->updatePost($app->PDO, $titulo, $texto, $idpost);
     $param = array('titulo' => $app->site_titulo
+                  );
+    /* Listar Posts */
+    $site = $app->loadModel("Site");
+    $obj = $site->listPosts($app->PDO);
+    $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'inicial',
+                  'titulo_pagina' => 'titulo',
+                  'inicial' => array('posts' => $posts)
                   );
     $app->loadView("Site",$param);
   }
