@@ -16,9 +16,7 @@
 
   <div class="container">
     <div class="blog-header">
-      <h1 class="blog-title">Mini Blog PHP</h1>
-      <p class="lead blog-description">Modelo de criação de um mini blog com o Bootstrap.</p>
-      <hr>
+      <?php include($tpl['titulo_pagina'].".tpl.php"); ?>
     </div>
     <div class="row">
       <div class="col-sm-8 blog-main">
@@ -32,6 +30,7 @@
     </div>
   -->
 
+    </div>
   </div>
 
   </body>

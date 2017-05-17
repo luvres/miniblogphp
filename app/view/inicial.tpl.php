@@ -6,7 +6,7 @@
 
   	<div class="blog-post">
 			<!-- Título do Post -->
-			<h2 class="blog-post-title"><?=$post["titulo"]?></h2>
+			<h5 class="blog-post-title"><?=$post["titulo"]?></h5>
 			<!-- Autor -->
 			<p class="blog-post-meta">Autor: <?=$post['nome']?></p>
 			<!-- Conteúdo - Texto -->

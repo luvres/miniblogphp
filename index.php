@@ -80,6 +80,7 @@
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
+                   'titulo_pagina' => 'titulo',
                    'inicial' => array('posts' => $posts)
                    );
     $app->loadView("Site",$param);
@@ -108,6 +109,9 @@
     $site = $app->loadModel("User");
     $nome = $_POST['nome'];
     $obj = $site->createUser($app->PDO, $nome);
+    $param = array('titulo' => $app->site_titulo,
+                   'dados' => array('tituloform' => 'Cadastrar novo usuário',
+                                    ));
     $app->loadView("Users",$param);
   }
 
@@ -136,6 +140,8 @@
     $nome = $_POST['nome'];
     $idusuario = $_POST['idusuario'];
     $obj = $site->updateUser($app->PDO, $nome, $idusuario);
+    $param = array('titulo' => $app->site_titulo
+                  );
     $app->loadView("Users",$param);
   }
 
@@ -192,5 +198,7 @@
     $texto = $_POST['texto'];
     $idpost = $_POST['idpost'];
     $obj = $site->updatePost($app->PDO, $titulo, $texto, $idpost);
+    $param = array('titulo' => $app->site_titulo
+                  );
     $app->loadView("Site",$param);
   }
