@@ -95,7 +95,7 @@
                    'users' => array('user' => $obj)
                    );
     $app->loadView("Users",$param);
-}
+  }
 
   function renderCreateUser($app){
     $param = array('titulo' => $app->site_titulo,
