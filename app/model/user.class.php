@@ -72,4 +72,13 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
+	public function getPostId($con, $idpost){
+		$obj = $con->prepare("SELECT u.idusuario,u.nome,p.idpost,p.titulo,p.texto
+													FROM usuario u,post p
+													WHERE u.idusuario=p.idusuario
+													AND idpost = :idpost");
+		$obj->bindParam(":idpost",$idpost);
+		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
+	}
+
 }

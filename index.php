@@ -48,14 +48,18 @@
       renderCreateNewPost($app);
       break;
 
+    case "deletePost":
+      $app = new App();
+      renderDeletePost($app);
+      break;
+
     case "updatePost":
       $app = new App();
       renderUpdatePost($app);
       break;
-
-    case "deletePost":
+    case "updatePostDone":
       $app = new App();
-      renderDeletePost($app);
+      renderUpdatePostDone($app);
       break;
 
 
@@ -119,7 +123,7 @@
     $site = $app->loadModel("User");
     $obj = $site->getUserId($app->PDO, $idusuario);
     $param = array('titulo' => $app->site_titulo,
-                   'dados' => array('tituloform' => 'Alterar usuário',
+                   'dados' => array('tituloform' => 'Editar Usuário',
                                     'idusuario' => $obj['idusuario'],
                                     'nome' => $obj['nome'],
                                     'btn' => 'Salvar',
@@ -159,13 +163,37 @@
     $app->loadView("Site",$param);
   }
 
-  function renderUpdatePost($app){
-    echo "Udate Post";
-  }
-
   function renderDeletePost($app){
     $idpost = (int)$_GET['idpost'];
     $site = $app->loadModel("User");
     $obj = $site->deletePost($app->PDO, $idpost);
     $app->loadView("Site",$param);
   }
+
+  function renderUpdatePost($app){
+    $idpost = (int)$_GET["idpost"];
+    $site = $app->loadModel("User");
+    $obj = $site->getPostId($app->PDO, $idpost);
+    $param = array('titulo' => $app->site_titulo,
+                   'dados' => array('tituloform' => 'Editar Post',
+                                    'idpost' => $obj['idpost'],
+                                    'titulo' => $obj['titulo'],
+                                    'texto' => $obj['texto'],
+                                    'btn' => 'Salvar',
+                                    'action' => 'updatePostDone'
+                                    ));
+    $app->loadView("Post_form",$param);
+echo "ID Post: "; print_r($idpost);
+echo "<br>";
+echo "ID User: "; print_r($idusuario);
+echo "<br>"; print_r($site);
+echo "<br>"; print_r($obj);
+echo "<br>"; print_r($param);
+  }
+  function renderUpdatePostDone($app){
+    $site = $app->loadModel("User");
+    $nome = $_POST['nome'];
+    $idusuario = $_POST['idusuario'];
+    $obj = $site->updateUser($app->PDO, $nome, $idusuario);
+    $app->loadView("Users",$param);
+}

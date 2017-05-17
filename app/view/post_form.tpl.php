@@ -39,7 +39,7 @@
 					<strong>Título Post:</strong>
   			</div>
   			<div class="col-xs-10">
-					<input type="text" value="<?=$tpl["dados"]["post_titulo"]?>" name="post_titulo" class="col-xs-12 form-control" value="" autofocus required/>
+					<input type="text" value="<?=$tpl["dados"]["titulo"]?>" name="titulo" class="col-xs-12 form-control" value="" autofocus required/>
   			</div>
   		</div>
     <br>
@@ -48,7 +48,7 @@
           <strong>Texto Completo:</strong>
         </div>
         <div class="col-xs-10">
-          <textarea name="post_texto" class="col-xs-12 form-control" required><?=$tpl["dados"]["post_texto"]?></textarea>
+          <textarea name="texto" class="col-xs-12 form-control" required><?=$tpl["dados"]["texto"]?></textarea>
         </div>
       </div>
     <br>
@@ -59,6 +59,7 @@
   			</div>
   		</div>
   		<input type="hidden" value="<?=$tpl["dados"]["idusuario"]?>" name="idusuario" />
+      <input type="hidden" value="<?=$tpl["dados"]["idpost"]?>" name="idpost" />
   	</form>
   </div>
 </div>

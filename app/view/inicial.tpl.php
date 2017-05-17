@@ -12,7 +12,7 @@
 			<!-- Conteúdo - Texto -->
 			<p><pre><?=$post['texto']?></pre></p>
 			<!-- Editar Post -->
-			<a href="index.php?m=updatePost" onclick="" >
+			<a href="index.php?m=updatePost&idpost=<?=$post["idpost"]?>" onclick="" >
 	    	<i class="glyphicon glyphicon-edit" style="color:#428bca"></i>
 	    </a>
 			<!-- Excluir Post -->
