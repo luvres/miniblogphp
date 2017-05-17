@@ -89,10 +89,9 @@
   function renderUser($app){
     $site = $app->loadModel("User");
     $obj = $site->getUsers($app->PDO);
-    $user = $obj;
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
-                   'users' => array('user' => $user)
+                   'users' => array('user' => $obj)
                    );
     $app->loadView("Users",$param);
 }
