@@ -31,10 +31,10 @@
   			</div>
   			<div class="col-xs-10">
           <div class="input-group">
-					<input type="text" value="<?=$tpl["dados"]["nome"]?>" name="nome" class="col-xs-12 form-control" placeholder="Digite o Nome" autofocus required/>
-          <span class="input-group-addon">*</span>
-  			</div>
-  		</div>
+  					<input type="text" value="<?=$tpl["dados"]["nome"]?>" name="nome" class="col-xs-12 form-control" placeholder="Digite o Nome" autofocus required/>
+            <span class="input-group-addon">*</span>
+  			   </div>
+  		  </div>
       </div>
       <br>
   		<div class="row marginTop">
