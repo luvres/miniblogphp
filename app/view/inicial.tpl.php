@@ -16,7 +16,7 @@
 	    	<i class="glyphicon glyphicon-edit" style="color:#428bca"></i>
 	    </a>
 			<!-- Excluir Post -->
-			<a href="index.php?m=deletePost" onclick="return confirm('Excluir Usuario?')" >
+			<a href="index.php?m=deletePost&idpost=<?=$post["idpost"]?>" onclick="return confirm('Excluir Post?')" >
 	      <i class="glyphicon glyphicon-trash" style="color:#fa5858"></i>
 	    </a>
   	</div><!-- /.blog-post -->

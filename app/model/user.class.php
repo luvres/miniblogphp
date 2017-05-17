@@ -10,6 +10,8 @@ class User {
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_OBJ) : false;
 	}
 */
+
+// USER
 	public function getUsers($con){
 		$obj = $con->prepare("SELECT idusuario,nome
 													FROM usuario
@@ -51,12 +53,21 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
+// POSTS
 	public function createPost($con, $titulo, $texto, $idusuario){
 		$ins = $con->prepare("INSERT INTO post(titulo,texto,idusuario)
 													VALUES(:titulo,:texto,:idusuario)");
 		$ins->bindParam(":titulo",$titulo);
 		$ins->bindParam(":texto",$texto);
 		$ins->bindParam(":idusuario",$idusuario);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
+
+	public function deletePost($con, $idpost){
+		$ins = $con->prepare("DELETE FROM post
+													WHERE idpost = :idpost");
+		$ins->bindParam(":idpost",$idpost);
 		$obj = $ins->execute();
 		return ($obj) ? $obj : false;
 	}

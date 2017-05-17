@@ -41,7 +41,7 @@
 						<a href="index.php?m=createPost&idusuario=<?=$user["idusuario"]?>" class="btn btn-success">Criar Post</a>
 					</td>
           <td>
-            <a href="index.php?m=updateUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-primary">Alterar</a>
+            <a href="index.php?m=updateUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-primary">Editar</a>
           </td>
 					<td>
 						<a href="index.php?m=deleteUser&idusuario=<?=$user["idusuario"]?>" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir o registro?')">Excluir</a>

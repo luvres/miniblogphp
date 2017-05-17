@@ -5,7 +5,10 @@
 
   $modulo = isset($_GET['m']) ? $_GET['m'] : 'inicial';
 
+
   switch ($modulo) {
+
+  // Usuários
     case "user":
       $app = new App();
       renderUser($app);
@@ -35,6 +38,7 @@
       renderUpdateUserDone($app);
       break;
 
+  // Posts
     case "createPost":
       $app = new App();
       renderCreatePost($app);
@@ -118,7 +122,7 @@
                    'dados' => array('tituloform' => 'Alterar usuário',
                                     'idusuario' => $obj['idusuario'],
                                     'nome' => $obj['nome'],
-                                    'btn' => 'Alterar',
+                                    'btn' => 'Salvar',
                                     'action' => 'updateUserDone'
                                     ));
     $app->loadView("User_form",$param);
@@ -160,5 +164,8 @@
   }
 
   function renderDeletePost($app){
-    echo "Delete Post";
+    $idpost = (int)$_GET['idpost'];
+    $site = $app->loadModel("User");
+    $obj = $site->deletePost($app->PDO, $idpost);
+    $app->loadView("Site",$param);
   }
