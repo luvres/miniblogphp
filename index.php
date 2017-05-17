@@ -108,10 +108,15 @@
   function renderCreateNewUser($app){
     $site = $app->loadModel("User");
     $nome = $_POST['nome'];
-    $obj = $site->createUser($app->PDO, $nome);
+    $site->createUser($app->PDO, $nome);
     $param = array('titulo' => $app->site_titulo,
                    'dados' => array('tituloform' => 'Cadastrar novo usuário',
                                     ));
+    $obj = $site->getUsers($app->PDO);
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'users',
+                   'users' => array('user' => $obj)
+                   );
     $app->loadView("Users",$param);
   }
 
