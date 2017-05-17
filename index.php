@@ -156,8 +156,14 @@
                   );
     /* Listar Usuários */
     $obj = $site->getUsers($app->PDO);
+    if($obj){
+      $msg = "Usuário alterado.";
+    }else{
+      $msg = "Alteração falhou.";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
+                   'msg' => $msg,
                    'users' => array('user' => $obj)
                    );
     $app->loadView("Users",$param);
