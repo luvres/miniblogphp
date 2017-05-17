@@ -20,40 +20,19 @@
       <p class="lead blog-description">Modelo de criação de um mini blog com o Bootstrap.</p>
       <hr>
     </div>
+    <div class="row">
+      <div class="col-sm-8 blog-main">
+        <?php include($tpl['pagina'].".tpl.php"); ?>
+      </div><!-- /.blog-main -->
 
-  <div class="row">
-
-  <div class="col-sm-8 blog-main">
-
-  <?php include($tpl['pagina'].".tpl.php"); ?>
-
-  </div><!-- /.blog-main -->
-
-
-
-  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-    <div class="sidebar-module sidebar-module-inset">
-      <h4>Buscar Post</h4>
-
-      <div class="container">
-  	    <div class="row">
-	        <div class="col-sm-3">
-            <div class="input-group custom-search-form">
-              <input type="text" class="form-control">
-              <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-             </button>
-             </span>
-           </div><!-- /input-group -->
-         </div>
-  	    </div>
+  <!--
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      <div class="sidebar-module sidebar-module-inset">
       </div>
-
     </div>
-  </div><!-- /.blog-sidebar -->
+  -->
 
-</div>
+  </div>
 
   </body>
 </html>

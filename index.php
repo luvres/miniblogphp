@@ -84,7 +84,8 @@
                    );
     $app->loadView("Site",$param);
   }
-// USUARIO
+
+// USUARIOS
   function renderUser($app){
     $site = $app->loadModel("User");
     $obj = $site->getUsers($app->PDO);
