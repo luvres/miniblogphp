@@ -6,7 +6,7 @@ Estrutura
 ----------
 -Pagina inicial
 [x] -Com listagem de todos os Posts
-[ ] -Busca
+[x] -Busca
 [x] -Paginação
 [ ] -Pagina do Post (Permitindo comentários)
 
