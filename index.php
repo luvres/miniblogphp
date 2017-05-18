@@ -77,7 +77,7 @@
   function renderPage($app){
   /* PAGINAÇÃO*/
     // Posts por página
-    $qtd = 3;
+    $qtd = 1;
     // Primeira página
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     // Página inicial por páginação

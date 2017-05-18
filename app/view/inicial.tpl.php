@@ -29,12 +29,12 @@
 
 		<!-- Paginação -->
 		<?php
-		 	echo "<a href=\"?page=1\">Primeira</a>";
+		 	echo "<a href=\"?page=1\">Primeira</a> - ";
 			for ($i=1; $i <= $tpl["pageTotal"] ; $i++) {
-				echo "<a href=\"?page=$i\">$i</a>";
+				echo " <a href=\"?page=$i\">$i</a> ";
 			}
 				$ultimo = $tpl['pageTotal'];
-				echo "<a href=\"?page=$ultimo\">Última</a>";
+				echo " - <a href=\"?page=$ultimo\">Última</a>";
 		 ?>
 
 		</div><!-- /.blog-sidebar -->
