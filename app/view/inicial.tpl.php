@@ -10,7 +10,7 @@
 
 	  	<div class="blog-post">
 				<!-- Título do Post -->
-				<h5 class="blog-post-title"><a href="#"><?=$post["titulo"]?><a></h5>
+				<h5 class="blog-post-title"><?=$post["titulo"]?></h5>
 				<!-- Autor -->
 				<p class="blog-post-meta">Autor: <?=$post['nome']?></p>
 				<!-- Conteúdo - Texto -->
