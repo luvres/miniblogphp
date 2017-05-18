@@ -26,12 +26,31 @@
         <?php include($tpl['pagina'].".tpl.php"); ?>
       </div><!-- /.blog-main -->
 
-  <!--
-    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-      <div class="sidebar-module sidebar-module-inset">
+
+      <!-- Search -->
+    <form class="" action="index.php?m=searchPosts" method="post">
+    <p class="lead blog-description">Buscar Posts por Título</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="input-group custom-search-form">
+              <input type="text" name="search" class="form-control" placeholder="Digite o titulo do post">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+        </div>
+      </div>
+      </form>
+    <!--
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
       </div>
     </div>
-  -->
+    -->
 
     </div>
   </div>

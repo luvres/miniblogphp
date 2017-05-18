@@ -62,6 +62,11 @@
       renderUpdatePostDone($app);
       break;
 
+    case "searchPosts":
+      $app = new App();
+      renderSearchPosts($app);
+      break;
+
 
     default:
       $app = new App();
@@ -238,9 +243,9 @@
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                  'inicial' => array('posts' => $posts),
-                  'dados' => array('classe' => $classe,
-                                   'msg' => $msg)
+                   'inicial' => array('posts' => $posts),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                   );
     $app->loadView("Site",$param);
   }
@@ -306,9 +311,28 @@
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                  'inicial' => array('posts' => $posts),
-                  'dados' => array('classe' => $classe,
-                                   'msg' => $msg)
+                   'inicial' => array('posts' => $posts),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                   );
+    $app->loadView("Site",$param);
+  }
+
+  // Buscar Posts
+  function renderSearchPosts($app){
+    $site = $app->loadModel("Site");
+    $search = $_POST['search'];
+    $obj = $site->searchPosts($app->PDO, $search);
+    $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    if($obj->rowCount() == 0){
+      $msg = "<h1>Nenhum Post encontrado<h1>";
+      //$classe = "alert-danger";
+    }
+    $param = array('titulo' => $app->site_titulo,
+                   'pagina' => 'inicial',
+                   'inicial' => array('posts' => $posts),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
+                   );
     $app->loadView("Site",$param);
   }

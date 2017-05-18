@@ -28,4 +28,12 @@ class Site {
     return $count;
   }
 
+  // Busca de posts por Título
+  public function searchPosts($con,$search) {
+    $where = " AND p.titulo LIKE '%$search%'";
+    $obj = $con->prepare($this->sqlPost." ".$where);
+    $obj->execute();
+    return $obj;
+  }
+
 }
