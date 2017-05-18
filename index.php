@@ -110,13 +110,23 @@
     $nome = $_POST['nome'];
     $site->createUser($app->PDO, $nome);
     $param = array('titulo' => $app->site_titulo,
-                   'dados' => array('tituloform' => 'Cadastrar novo usuário',
+                   'dados' => array('tituloform' => 'Cadastrar novo usuário'
                                     ));
     /* Listar Usuários */
     $obj = $site->getUsers($app->PDO);
+    if($obj){
+      $msg = "Usuário cadastrado com sucesso!";
+      //$classe = "alert-success";
+      $classe = "alert-info";
+    }else{
+      $msg = "Cadastro falhou.";
+      $classe = "alert-danger";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
-                   'users' => array('user' => $obj)
+                   'users' => array('user' => $obj),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                    );
     $app->loadView("Users",$param);
   }
@@ -127,9 +137,18 @@
     $obj = $site->deleteUser($app->PDO, $idusuario);
     /* Listar Usuários */
     $obj = $site->getUsers($app->PDO);
+    if(!$site->getUserId($app->PDO, $idusuario)){
+      $msg = "Usuário excluído!";
+      $classe = "alert-info";
+    }else{
+      $msg = "Usuário não pode ser excluído.";
+      $classe = "alert-danger";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
-                   'users' => array('user' => $obj)
+                   'users' => array('user' => $obj),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                    );
     $app->loadView("Users",$param);
   }
@@ -157,14 +176,18 @@
     /* Listar Usuários */
     $obj = $site->getUsers($app->PDO);
     if($obj){
-      $msg = "Usuário alterado.";
+      $msg = "Usuário alterado com sucesso!";
+      $classe = "alert-info";
     }else{
       $msg = "Alteração falhou.";
+      $classe = "alert-danger";
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'users',
                    'msg' => $msg,
-                   'users' => array('user' => $obj)
+                   'users' => array('user' => $obj),
+                   'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                    );
     $app->loadView("Users",$param);
   }
@@ -194,10 +217,19 @@
     $site = $app->loadModel("Site");
     $obj = $site->listPosts($app->PDO);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    if($obj){
+      $msg = "Post cadastrado com sucesso!";
+      $classe = "alert-success";
+    }else{
+      $msg = "Falha na criação do Post.";
+      $classe = "alert-danger";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
                   'titulo_pagina' => 'titulo',
-                  'inicial' => array('posts' => $posts)
+                  'inicial' => array('posts' => $posts),
+                  'dados' => array('classe' => $classe,
+                                   'msg' => $msg)
                   );
     $app->loadView("Site",$param);
   }
@@ -210,10 +242,19 @@
     $site = $app->loadModel("Site");
     $obj = $site->listPosts($app->PDO);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    if($obj){
+      $msg = "Post excluído!";
+      $classe = "alert-info";
+    }else{
+      $msg = "Post não pode ser excluído.";
+      $classe = "alert-danger";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
                   'titulo_pagina' => 'titulo',
-                  'inicial' => array('posts' => $posts)
+                  'inicial' => array('posts' => $posts),
+                  'dados' => array('classe' => $classe,
+                                    'msg' => $msg)
                   );
     $app->loadView("Site",$param);
   }
@@ -246,10 +287,19 @@
     $site = $app->loadModel("Site");
     $obj = $site->listPosts($app->PDO);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+    if($obj){
+      $msg = "Post alterado com sucesso!";
+      $classe = "alert-success";
+    }else{
+      $msg = "Falha na alteração do Post.";
+      $classe = "alert-danger";
+    }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
                   'titulo_pagina' => 'titulo',
-                  'inicial' => array('posts' => $posts)
+                  'inicial' => array('posts' => $posts),
+                  'dados' => array('classe' => $classe,
+                                   'msg' => $msg)
                   );
     $app->loadView("Site",$param);
   }

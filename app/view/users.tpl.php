@@ -14,10 +14,18 @@
       <?php include "topo.php"; ?>
     </header>
 
+
+
   <div class="container marginTop=">
 	<div class="row">
 	<div class="col-xs-12">
-    <p><p>
+    <p>
+    <?php if($tpl["dados"]["msg"] != "") { ?>
+      <div class="alert <?=$tpl["dados"]["classe"]?>">
+        <strong><?=$tpl["dados"]["msg"]?></strong>
+      </div>
+    <?php } ?>
+    <p>
     <a href="index.php?m=createUser" class="btn btn-primary btn-large" style="font-size:100%; background-color:#428bca">Cadastrar novo usuário</a>
 
 		<table class="table table-striped table-bordered table-hover marginTop">

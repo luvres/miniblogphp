@@ -2,6 +2,10 @@
 	<div class="row">
 		<div class="col-sm-8 blog-main">
 
+			<div class="alert <?=$tpl["dados"]["classe"]?>">
+        <strong><?=$tpl["dados"]["msg"]?></strong>
+      </div>
+			
 <?php foreach($tpl["inicial"]["posts"] as $post) { ?>
 
   	<div class="blog-post">
@@ -23,7 +27,7 @@
 
 <?php } ?>
 
-<!-- Paginação -->
+<!-- Paginação
 <nav aria-label="Page navigation">
 	<ul class="pagination">
 		<li>
@@ -42,7 +46,7 @@
 			</a>
 		</li>
 	</ul>
-</nav><!-- Paginação -->
+</nav> Paginação -->
 
 		</div><!-- /.blog-sidebar -->
 	</div><!-- /.row -->
