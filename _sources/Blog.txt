@@ -1,0 +1,28 @@
+[x] Desenvolver um mini blog, com área administrativa (não precisa de login e senha).
+[x] O projeto deverá ser desenvolvido utilizando a linguagem PHP com Orientação a Objetos.
+[x] As urls têm que ser amigáveis.
+
+Estrutura
+----------
+-Pagina inicial
+[x] -Com listagem de todos os Posts
+[ ] -Busca
+[ ] -Paginação
+[ ] -Pagina do Post (Permitindo comentários)
+
+Área administrativa
+--------------------
+-Gerenciamento de Posts
+[x] -Adicionar
+[x] -Editar
+[x] -Remover
+-Gerenciamento de autores
+[x] -Adicionar
+[x] -Editar
+[x] -Remover
+
+
+[x] -Cada Post criado deverá ser atribuído a um autor.
+[x] -Os dados deverão ser persistidos em banco de dados.
+[x] -O projeto deverá conter o código utilizado e a estrutura do banco de dados.
+[x] -Diferencial: publicar o projeto no GitHub.
