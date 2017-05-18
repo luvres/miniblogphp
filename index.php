@@ -75,13 +75,25 @@
 
 // Principal
   function renderPage($app){
+  /* PAGINAÇÃO*/
+    // Posts por página
+    $qtd = 3;
+    // Primeira página
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    // Página inicial por páginação
+    $ini = ($page -1) * $qtd;
     $site = $app->loadModel("Site");
-    $obj = $site->listPosts($app->PDO);
+    // Total de posts
+    $postTotal = $site->getRowsPost($app->PDO); //print_r($postTotal);
+    // Total de páginas
+    $pageTotal = ceil($postTotal/$qtd); //print_r($pageTotal);
+  /* LISTAR POSTS */
+    $obj = $site->listPostsPage($app->PDO,$ini,$qtd);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                   'titulo_pagina' => 'titulo',
-                   'inicial' => array('posts' => $posts)
+                   'inicial' => array('posts' => $posts),
+                   'pageTotal' => $pageTotal
                    );
     $app->loadView("Site",$param);
   }
@@ -226,7 +238,6 @@
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                  'titulo_pagina' => 'titulo',
                   'inicial' => array('posts' => $posts),
                   'dados' => array('classe' => $classe,
                                    'msg' => $msg)
@@ -251,7 +262,6 @@
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                  'titulo_pagina' => 'titulo',
                   'inicial' => array('posts' => $posts),
                   'dados' => array('classe' => $classe,
                                     'msg' => $msg)
@@ -296,7 +306,6 @@
     }
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                  'titulo_pagina' => 'titulo',
                   'inicial' => array('posts' => $posts),
                   'dados' => array('classe' => $classe,
                                    'msg' => $msg)

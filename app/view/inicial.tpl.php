@@ -5,7 +5,7 @@
 			<div class="alert <?=$tpl["dados"]["classe"]?>">
         <strong><?=$tpl["dados"]["msg"]?></strong>
       </div>
-			
+
 <?php foreach($tpl["inicial"]["posts"] as $post) { ?>
 
   	<div class="blog-post">
@@ -27,26 +27,15 @@
 
 <?php } ?>
 
-<!-- Paginação
-<nav aria-label="Page navigation">
-	<ul class="pagination">
-		<li>
-			<a href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li>
-			<a href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
-	</ul>
-</nav> Paginação -->
+		<!-- Paginação -->
+		<?php
+		 	echo "<a href=\"?page=1\">Primeira</a>";
+			for ($i=1; $i <= $tpl["pageTotal"] ; $i++) {
+				echo "<a href=\"?page=$i\">$i</a>";
+			}
+				$ultimo = $tpl['pageTotal'];
+				echo "<a href=\"?page=$ultimo\">Última</a>";
+		 ?>
 
 		</div><!-- /.blog-sidebar -->
 	</div><!-- /.row -->
