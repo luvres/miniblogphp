@@ -19,6 +19,7 @@
 			<a href="index.php?m=updatePost&idpost=<?=$post["idpost"]?>" onclick="" >
 	    	<i class="glyphicon glyphicon-edit" style="color:#428bca"></i>
 	    </a>
+			
 			<!-- Excluir Post -->
 			<a href="index.php?m=deletePost&idpost=<?=$post["idpost"]?>" onclick="return confirm('Excluir Post?')" >
 	      <i class="glyphicon glyphicon-trash" style="color:#fa5858"></i>
