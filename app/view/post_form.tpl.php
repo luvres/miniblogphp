@@ -15,6 +15,7 @@
     </header>
 
   <div class="container marginTop">
+
     <div class="row">
   		<div class="col-xs-12">
   			<div class="well well-small">
@@ -23,7 +24,7 @@
   		</div>
   	</div>
 
-  	<form method="POST" action="index.php?m=<?=$tpl["dados"]["action"]?>">
+  	<form action="index.php?m=<?=$tpl['dados']['action']?>" method="post">
 
       <div class="row marginTop">
   			<div class="col-xs-2">
@@ -39,7 +40,7 @@
 					<strong>Título Post:</strong>
   			</div>
   			<div class="col-xs-10">
-					<input type="text" value="<?=$tpl["dados"]["titulo"]?>" name="titulo" class="col-xs-12 form-control" value="" autofocus required/>
+					<input type="text" value="<?=$tpl['dados']['titulo']?>" name="titulo" class="col-xs-12 form-control" value="" autofocus required/>
   			</div>
   		</div>
     <br>

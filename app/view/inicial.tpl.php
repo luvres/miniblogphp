@@ -14,11 +14,9 @@
 				<!-- Autor -->
 				<p class="blog-post-meta">Autor: <?=$post['nome']?></p>
 				<!-- Conteúdo - Texto -->
-				<?php $text = $post['texto'];
-					//echo substr($text,0,100) . "...";
-					echo $text;
-				?>
-				<!--<a href="<?=$post['idpost']?>">Leia Mais</a>-->
+				<p style="text-align:justify"><?=$post['texto']?></p>
+
+				<!--<a href="< ?=$post['idpost']?>">Leia Mais</a>-->
 				<!-- Editar Post -->
 				<p>
 				<a href="index.php?m=updatePost&idpost=<?=$post["idpost"]?>" onclick="" >
@@ -28,6 +26,23 @@
 				<a href="index.php?m=deletePost&idpost=<?=$post["idpost"]?>" onclick="return confirm('Excluir Post?')" >
 		      <i class="glyphicon glyphicon-trash" style="color:#fa5858"></i>
 		    </a>
+				<br>
+				<!-- Comentários -->
+				<label class="comment" id="comment">Comentários</label>
+				<form class="" action="index.php" method="post">
+					<div class="form-group">
+						<textarea name="commentbox" rows="3" cols="50" style="font-size:14px" placeholder="Adicionar um comentário"></textarea>
+					</div>
+					<input type="submit" value="Enviar" class="btn btn-default">
+				</form>
+
+				<div class="media">
+					<p>Testando texto de comentários</p>
+					<div class="comment-meta">
+						<a href="#">editar</a>
+						<a href="#">excluir</a>
+					</div>
+				</div>
 
 	  	</div><!-- /.blog-post -->
 
