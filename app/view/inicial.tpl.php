@@ -14,8 +14,13 @@
 				<!-- Autor -->
 				<p class="blog-post-meta">Autor: <?=$post['nome']?></p>
 				<!-- Conteúdo - Texto -->
-				<p><pre><?=$post['texto']?></pre></p>
+				<?php $text = $post['texto'];
+					//echo substr($text,0,100) . "...";
+					echo $text;
+				?>
+				<!--<a href="<?=$post['idpost']?>">Leia Mais</a>-->
 				<!-- Editar Post -->
+				<p>
 				<a href="index.php?m=updatePost&idpost=<?=$post["idpost"]?>" onclick="" >
 		    	<i class="glyphicon glyphicon-edit" style="color:#428bca"></i>
 		    </a>
@@ -23,6 +28,7 @@
 				<a href="index.php?m=deletePost&idpost=<?=$post["idpost"]?>" onclick="return confirm('Excluir Post?')" >
 		      <i class="glyphicon glyphicon-trash" style="color:#fa5858"></i>
 		    </a>
+
 	  	</div><!-- /.blog-post -->
 
 	<?php } ?>
