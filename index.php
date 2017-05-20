@@ -445,6 +445,7 @@
         $classe = "alert-success";
       }
     /* LISTAR COMENTARIOS */
+    
       $obj_coment = $site->listComent($app->PDO);
       $comentss = $obj_coment->fetchAll(PDO::FETCH_ASSOC);
       $coments = array_reverse($comentss, true);
