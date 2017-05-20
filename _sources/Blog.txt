@@ -8,7 +8,7 @@ Estrutura
 [x] -Com listagem de todos os Posts
 [x] -Busca
 [x] -Paginação
-[ ] -Pagina do Post (Permitindo comentários)
+[x] -Pagina do Post (Permitindo comentários)
 
 Área administrativa
 --------------------
