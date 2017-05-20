@@ -67,6 +67,12 @@
       renderSearchPosts($app);
       break;
 
+  // Comentários
+  case "sendComment":
+      $app = new App();
+      renderSendComment($app);
+      break;
+
 
     default:
       $app = new App();
@@ -92,12 +98,20 @@
     $postTotal = $site->getRowsPost($app->PDO); //print_r($postTotal);
     // Total de páginas
     $pageTotal = ceil($postTotal/$qtd); //print_r($pageTotal);
+
   /* LISTAR POSTS */
     $obj = $site->listPostsPage($app->PDO,$ini,$qtd);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+
+  /* LISTAR COMENTARIOS */
+    $obj_coment = $site->listComent($app->PDO);
+    $comentss = $obj_coment->fetchAll(PDO::FETCH_ASSOC);
+    $coments = array_reverse($comentss, true);
+
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                   'inicial' => array('posts' => $posts),
+                   'inicial' => array('posts' => $posts,
+                                      'coments' => $coments),
                    'pageTotal' => $pageTotal
                    );
     $app->loadView("Site",$param);
@@ -336,3 +350,14 @@
                    );
     $app->loadView("Site",$param);
   }
+
+  // COMENTÁRIOS
+    function renderSendComment($app){
+      $site = $app->loadModel("User");
+      $comment = $_POST['commentbox'];
+      $obj = $site->sendComment($app->PDO, $texto, $idpost);
+
+      $idpost = (int)$_GET["idpost"];
+
+print_r($comment);
+    }

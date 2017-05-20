@@ -91,5 +91,15 @@ class User {
 		return ($obj) ? $obj : false;
 	}
 
+// COMMENTS
+	public function sendComment($con, $texto, $idpost){
+		$ins = $con->prepare("INSERT INTO comentario(texto,idpost)
+													VALUES(:texto,:idpost)");
+		$ins->bindParam(":texto",$texto);
+		$ins->bindParam(":idpost",$idpost);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
+
 
 }
