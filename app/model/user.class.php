@@ -30,7 +30,7 @@ class User {
 	public function deleteUser($con, $idusuario){
 		$ins = $con->prepare("DELETE FROM usuario
 													WHERE idusuario = :idusuario");
-		$ins->bindParam(":idusuario",$idusuario);
+		$ins->bindParam(":idusuario", $idusuario);
 		$obj = $ins->execute();
 		return ($obj) ? $obj : false;
 	}
@@ -39,7 +39,7 @@ class User {
 		$obj = $con->prepare("SELECT idusuario,nome
 													FROM usuario
 													WHERE idusuario = :idusuario");
-		$obj->bindParam(":idusuario",$idusuario);
+		$obj->bindParam(":idusuario", $idusuario);
 		return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
 	}
 
@@ -84,9 +84,9 @@ class User {
 		$ins = $con->prepare("UPDATE post
 													SET titulo=:titulo, texto=:texto
 													WHERE idpost = :idpost");
-		$ins->bindParam(":titulo",$titulo);
-		$ins->bindParam(":texto",$texto);
-		$ins->bindParam(":idpost",$idpost);
+		$ins->bindParam(":titulo", $titulo);
+		$ins->bindParam(":texto", $texto);
+		$ins->bindParam(":idpost", $idpost);
 		$obj = $ins->execute();
 		return ($obj) ? $obj : false;
 	}
@@ -97,6 +97,14 @@ class User {
 													VALUES(:texto_coment,:idpost)");
 		$ins->bindParam(":texto_coment",$texto);
 		$ins->bindParam(":idpost",$idpost);
+		$obj = $ins->execute();
+		return ($obj) ? $obj : false;
+	}
+
+	public function deleteComment($con, $idcomentario){
+		$ins = $con->prepare("DELETE FROM comentario
+													WHERE idcomentario = :idcomentario");
+		$ins->bindParam(":idcomentario", $idcomentario);
 		$obj = $ins->execute();
 		return ($obj) ? $obj : false;
 	}
