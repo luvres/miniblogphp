@@ -43,23 +43,6 @@ CREATE TABLE IF NOT EXISTS `blog_php`.`post` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `blog_php`.`comentario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `blog_php`.`comentario` (
-  `idcomentario` INT NOT NULL AUTO_INCREMENT,
-  `texto_coment` TEXT NULL,
-  `idpost` INT NOT NULL,
-  PRIMARY KEY (`idcomentario`),
-  INDEX `fk_comentario_post1_idx` (`idpost` ASC),
-  CONSTRAINT `fk_comentario_post1`
-    FOREIGN KEY (`idpost`)
-    REFERENCES `blog_php`.`post` (`idpost`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
