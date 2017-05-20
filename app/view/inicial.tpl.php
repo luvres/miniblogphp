@@ -44,7 +44,9 @@
 						<?=$coments["texto_coment"]?>
 					</p>
 					<div class="comment-meta">
+						<!--
 						<a href="#" style="color:#0000ff; font-size:14px">editar</a>
+					-->
 						<a href="index.php?m=deleteComment&idcomentario=<?=$coments["idcomentario"]?>" style="color:#ff0000; font-size:14px">excluir</a>
 					</div>
 					<br>
