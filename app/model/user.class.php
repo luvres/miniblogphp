@@ -93,9 +93,9 @@ class User {
 
 // COMMENTS
 	public function sendComment($con, $texto, $idpost){
-		$ins = $con->prepare("INSERT INTO comentario(texto,idpost)
-													VALUES(:texto,:idpost)");
-		$ins->bindParam(":texto",$texto);
+		$ins = $con->prepare("INSERT INTO comentario(texto_coment,idpost)
+													VALUES(:texto_coment,:idpost)");
+		$ins->bindParam(":texto_coment",$texto);
 		$ins->bindParam(":idpost",$idpost);
 		$obj = $ins->execute();
 		return ($obj) ? $obj : false;

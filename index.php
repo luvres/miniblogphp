@@ -310,10 +310,20 @@
     $texto = $_POST['texto'];
     $idpost = $_POST['idpost'];
     $obj = $site->updatePost($app->PDO, $titulo, $texto, $idpost);
-    $param = array('titulo' => $app->site_titulo
-                  );
-    /* Listar Posts */
+  /* PAGINAÇÃO*/
+    // Posts por página
+    $qtd = 2;
+    // Primeira página
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    // Página inicial por páginação
+    $ini = ($page -1) * $qtd;
     $site = $app->loadModel("Site");
+    // Total de posts
+    $postTotal = $site->getRowsPost($app->PDO); //print_r($postTotal);
+    // Total de páginas
+    $pageTotal = ceil($postTotal/$qtd); //print_r($pageTotal);
+  /* LISTAR POSTS */
+    //$site = $app->loadModel("Site");
     $obj = $site->listPosts($app->PDO);
     $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
     if($obj){
@@ -323,11 +333,17 @@
       $msg = "Falha na alteração do Post.";
       $classe = "alert-danger";
     }
+  /* LISTAR COMENTARIOS */
+    $obj_coment = $site->listComent($app->PDO);
+    $comentss = $obj_coment->fetchAll(PDO::FETCH_ASSOC);
+    $coments = array_reverse($comentss, true);
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                   'inicial' => array('posts' => $posts),
+                   'inicial' => array('posts' => $posts,
+                                      'coments' => $coments),
                    'dados' => array('classe' => $classe,
-                                    'msg' => $msg)
+                                    'msg' => $msg),
+                   'pageTotal' => $pageTotal
                   );
     $app->loadView("Site",$param);
   }
@@ -354,10 +370,43 @@
   // COMENTÁRIOS
     function renderSendComment($app){
       $site = $app->loadModel("User");
-      $comment = $_POST['commentbox'];
+      $texto = $_POST['commentbox'];
+      $idpost = (int)$_GET['idpost'];
       $obj = $site->sendComment($app->PDO, $texto, $idpost);
-
-      $idpost = (int)$_GET["idpost"];
-
-print_r($comment);
+    /* PAGINAÇÃO*/
+      // Posts por página
+      $qtd = 2;
+      // Primeira página
+      $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      // Página inicial por páginação
+      $ini = ($page -1) * $qtd;
+      $site = $app->loadModel("Site");
+      // Total de posts
+      $postTotal = $site->getRowsPost($app->PDO); //print_r($postTotal);
+      // Total de páginas
+      $pageTotal = ceil($postTotal/$qtd); //print_r($pageTotal);
+    /* LISTAR POSTS */
+      //$site = $app->loadModel("Site");
+      $obj = $site->listPosts($app->PDO);
+      $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
+      if($obj){
+        $msg = "Comentário adicionado.";
+        $classe = "alert-success";
+      }else{
+        $msg = "Falha no comentário.";
+        $classe = "alert-danger";
+      }
+    /* LISTAR COMENTARIOS */
+      $obj_coment = $site->listComent($app->PDO);
+      $comentss = $obj_coment->fetchAll(PDO::FETCH_ASSOC);
+      $coments = array_reverse($comentss, true);
+      $param = array('titulo' => $app->site_titulo,
+                     'pagina' => 'inicial',
+                     'inicial' => array('posts' => $posts,
+                                        'coments' => $coments),
+                     'dados' => array('classe' => $classe,
+                                      'msg' => $msg),
+                     'pageTotal' => $pageTotal
+                    );
+      $app->loadView("Site",$param);
     }

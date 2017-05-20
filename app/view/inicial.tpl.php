@@ -29,11 +29,11 @@
 				<br>
 				<!-- Comentários -->
 				<label class="comment" id="comment">Comentários</label>
-				<form class="" action="index.php?m=sendComment" method="post">
+				<form class="" action="index.php?m=sendComment&idpost=<?=$post["idpost"]?>" method="post">
 					<div class="form-group">
 						<textarea name="commentbox" rows="3" cols="60" style="font-size:14px" placeholder="Adicionar um comentário"></textarea>
 					</div>
-					<input type="submit" value="Enviar" class="btn btn-default">
+					<input type="submit" value="Salvar" class="btn btn-default">
 				</form>
 
 				<div class="media">
