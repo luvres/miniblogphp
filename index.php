@@ -98,6 +98,7 @@
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     // Página inicial por páginação
     $ini = ($page -1) * $qtd;
+
     $site = $app->loadModel("Site");
     // Total de posts
     $postTotal = $site->getRowsPost($app->PDO); //print_r($postTotal);
@@ -355,21 +356,42 @@
 
   // Buscar Posts
   function renderSearchPosts($app){
+  /* PAGINAÇÃO*/
+    // // Posts por página
+    // $qtd = 2;
+    // // Primeira página
+    // $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    // // Página inicial por páginação
+    // $ini = ($page -1) * $qtd;
     $site = $app->loadModel("Site");
     $search = $_POST['search'];
     $obj = $site->searchPosts($app->PDO, $search);
-    $posts = $obj->fetchAll(PDO::FETCH_ASSOC);
-    if($obj->rowCount() == 0){
+    $posts = $obj[0]->fetchAll(PDO::FETCH_ASSOC);
+    // Total de posts
+    // $postTotal = $obj[1]; //print_r($postTotal);
+    // Total de páginas
+    // $pageTotal = ceil($postTotal/$qtd); //print_r($pageTotal);
+
+    if($obj[0]->rowCount() == 0){
       $msg = "<h1>Nenhum Post encontrado<h1>";
       //$classe = "alert-danger";
     }
+
+  /* LISTAR COMENTARIOS */
+    $obj_coment = $site->listComent($app->PDO);
+    $comentss = $obj_coment->fetchAll(PDO::FETCH_ASSOC);
+    $coments = array_reverse($comentss, true);
+
     $param = array('titulo' => $app->site_titulo,
                    'pagina' => 'inicial',
-                   'inicial' => array('posts' => $posts),
+                   'inicial' => array('posts' => $posts,
+                                      'coments' => $coments),
                    'dados' => array('classe' => $classe,
-                                    'msg' => $msg)
+                                    'msg' => $msg),
+                   'pageTotal' => $pageTotal
                    );
     $app->loadView("Site",$param);
+// print_r($obj);
   }
 
   // COMENTÁRIOS
@@ -409,8 +431,8 @@
                      'pagina' => 'inicial',
                      'inicial' => array('posts' => $posts,
                                         'coments' => $coments),
-                     'dados' => array('classe' => $classe,
-                                      'msg' => $msg),
+                     'dados' => array('classe_coment' => $classe,
+                                      'msg_coment' => $msg),
                      'pageTotal' => $pageTotal
                     );
       $app->loadView("Site",$param);
@@ -452,8 +474,8 @@
                      'pagina' => 'inicial',
                      'inicial' => array('posts' => $posts,
                                         'coments' => $coments),
-                     'dados' => array('classe' => $classe,
-                                      'msg' => $msg),
+                     'dados' => array('classe_coment' => $classe,
+                                      'msg_coment' => $msg),
                      'pageTotal' => $pageTotal
                     );
       $app->loadView("Site",$param);

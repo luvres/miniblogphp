@@ -36,7 +36,8 @@ class Site {
     $where = " AND p.titulo LIKE '%$search%'";
     $obj = $con->prepare($this->sqlPost." ".$where);
     $obj->execute();
-    return $obj;
+    $count = $obj->rowCount();
+    return array($obj, $count);
   }
 
   // Listar todos os comentários
