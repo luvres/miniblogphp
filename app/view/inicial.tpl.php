@@ -32,7 +32,7 @@
 			    <strong><?=$tpl["dados"]["msg_coment"]?></strong>
 			  </div>
 			<?php } ?>
-			<form class="" action="index.php?m=sendComment&idpost=<?=$post["idpost"]?>" method="post">
+			<form class="" action="index.php?m=sendComment&idpost=<?=$post["idpost"]?>&idcomentario=<?=$coments["idcomentario"]?>" method="post">
 				<div class="form-group">
 					<textarea name="commentbox" rows="3" cols="60" style="font-size:14px" placeholder="Adicionar um comentário" required=""></textarea>
 				</div>

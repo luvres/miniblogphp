@@ -433,7 +433,8 @@
                                         'coments' => $coments),
                      'dados' => array('classe_coment' => $classe,
                                       'msg_coment' => $msg),
-                     'pageTotal' => $pageTotal
+                     'pageTotal' => $pageTotal,
+                     'id' => $idpost
                     );
       $app->loadView("Site",$param);
     }
