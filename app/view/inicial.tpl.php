@@ -26,7 +26,7 @@
 	    </a>
 			<br>
 			<!-- Comentários -->
-			<label class="comment" id="comment">Comentários</label>
+			<label class="comment">Comentários</label>
 			<?php if($tpl["id"] == $post["idpost"]) { ?>
 				<div class="alert <?=$tpl["dados"]["classe_coment"]?>">
 			    <strong><?=$tpl["dados"]["msg_coment"]?></strong>
