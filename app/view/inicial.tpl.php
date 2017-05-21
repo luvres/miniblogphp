@@ -27,9 +27,11 @@
 			<br>
 			<!-- Comentários -->
 			<label class="comment" id="comment">Comentários</label>
-			<div class="alert <?=$tpl["dados"]["classe_coment"]?>">
-		    <strong><?=$tpl["dados"]["msg_coment"]?></strong>
-		  </div>
+			<?php if($tpl["id"] == $post["idpost"]) { ?>
+				<div class="alert <?=$tpl["dados"]["classe_coment"]?>">
+			    <strong><?=$tpl["dados"]["msg_coment"]?></strong>
+			  </div>
+			<?php } ?>
 			<form class="" action="index.php?m=sendComment&idpost=<?=$post["idpost"]?>" method="post">
 				<div class="form-group">
 					<textarea name="commentbox" rows="3" cols="60" style="font-size:14px" placeholder="Adicionar um comentário" required=""></textarea>
@@ -47,7 +49,7 @@
 						<!--
 						<a href="#" style="color:#0000ff; font-size:14px">editar</a>
 					-->
-						<a href="index.php?m=deleteComment&idcomentario=<?=$coments["idcomentario"]?>" style="color:#ff0000; font-size:14px">excluir</a>
+						<a href="index.php?m=deleteComment&idpost=<?=$post["idpost"]?>&idcomentario=<?=$coments["idcomentario"]?>" style="color:#ff0000; font-size:14px">excluir</a>
 					</div>
 					<br>
 			<?php } ?>

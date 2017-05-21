@@ -444,7 +444,6 @@
       $idpost = (int)$_GET['idpost'];
       $site = $app->loadModel("User");
       $obj = $site->deleteComment($app->PDO, $idcomentario);
-
     /* PAGINAÇÃO*/
       // Posts por página
       $qtd = 2;
@@ -476,7 +475,8 @@
                                         'coments' => $coments),
                      'dados' => array('classe_coment' => $classe,
                                       'msg_coment' => $msg),
-                     'pageTotal' => $pageTotal
+                     'pageTotal' => $pageTotal,
+                     'id' => $idpost
                     );
       $app->loadView("Site",$param);
     }
